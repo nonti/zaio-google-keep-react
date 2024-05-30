@@ -9,10 +9,9 @@ const Notes = (props) =>{
 
   return (
 		<div className="notes">
-			<Note id={props.notes[0]} title={props.notes[0].title} text={props.notes[0].text} />
-			<Note id={props.notes[1]} title={props.notes[1].title} text={props.notes[1].text}/>
-			<Note id={props.notes[2]} title={props.notes[2].title} text={props.notes[2].text}/>
-			<Note id={props.notes[3]} title={props.notes[3].title} text={props.notes[3].text}/>
+			{
+				notes.map((note, index) => <Note key={index} id={note.id} title={note.title} text={note.text} />)
+			}
 		</div>
   )
 }
