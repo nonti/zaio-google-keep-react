@@ -10,6 +10,7 @@ const NOTES = []
 
 const App = () => {
   const [notes, setNotes] = useState(NOTES);
+  const [selectedNote, setSelectedNote] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const addNote = (note) => {
@@ -39,10 +40,15 @@ const App = () => {
         notes={notes}
         deleteNote={deleteNote}
         toggleModal={toggleModal}
+        setSelectedNote={setSelectedNote}
       />
       {
         isModalOpen && (
-          <Modal isModalOpen={isModalOpen} />
+          <Modal
+            isModalOpen={isModalOpen}
+            selectedNote={selectedNote}
+            toggleModal={toggleModal}
+          />
         )
       }
       
