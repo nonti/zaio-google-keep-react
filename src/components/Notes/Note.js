@@ -1,19 +1,38 @@
-
+import { useState } from "react";
 
 const Note = (props) => {
-	let title = props.title;
-	let text = props.text;
+	const [title, setTitle] = useState(props.title);
+	const [text, setText] = useState(props.text);
+	const [isHover, setIsHover] = useState(false);
 
 	const noteClickHandler = () => {
-		title = "changed Title";
-		alert(`Title: ${title}`);	
+		setTitle("chsnge title");
+		setText("change text");
 	}
+
+	const hoverOverHandler = () => {
+		setIsHover(true); 
+	};
+	const hoverOutHandler = () => {
+		setIsHover(false); 
+	};
       return (
-      <div className="note" id="note.id" onClick={noteClickHandler}>
-        <span className="material-symbols-outlined check-circle">check_circle</span>
+				<div
+					className="note"
+					id="note.id"
+					onClick={noteClickHandler}
+					onMouseOver={hoverOverHandler}
+					onMouseOut={hoverOutHandler}
+				> 
+					{isHover && (
+						<span className="material-symbols-outlined check-circle">check_circle</span>
+						)
+					}
           <div className="title">{title}</div>
-          <div className="text">{text}</div>
-          	<div className="note-footer">
+					<div className="text">{text}</div>
+					<div
+						className="note-footer"
+						style={{ visibility: isHover ? "visible" : "hidden" }}>
             	<div className="tooltip">
               	<span className="material-symbols-outlined hover small-icon">add_alert</span>
               	<span className="tooltip-text">Remind me</span>

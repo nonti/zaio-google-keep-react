@@ -22,7 +22,7 @@ const App = () => {
       return [...notes, note];
     });
 
-   
+  
   }
   return (
     <div>

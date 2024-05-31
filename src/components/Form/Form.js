@@ -28,16 +28,32 @@ const Form = (props) => {
   const formClickHandler = () => {
     console.log("form clicked on");
     setActiveForm(true);
-
   }
+
     return (
       <div>
-        <div className="form-container active-form" onClick={formClickHandler}>
+        <div
+          className="form-container active-form"
+          onClick={formClickHandler}
+        >
           <form onSubmit={submitFormHandler} className={isActiveForm ? "form": " "} id="form">
             {isActiveForm && (
-              <input id="note-title" onChange={titleChangeHandler} value={title} type="text" className="note-title" placeholder="Title" />
+              <input id="note-title"
+                onChange={titleChangeHandler}
+                value={title}
+                type="text"
+                className="note-title"
+                placeholder="Title"
+              />
             )}
-            <input id="note-text" onChange={textChangeHandler} value={text} type="text" className="note-text" placeholder="Take a note..." />
+            <input
+              id="note-text"
+              onChange={textChangeHandler}
+              value={text}
+              type="text"
+              className="note-text"
+              placeholder="Take a note..."
+            />
             {
               isActiveForm ? (
                 <div className="form-actions">
@@ -102,25 +118,6 @@ const Form = (props) => {
 
 export default Form;
 
-{/*
-<div className="form-container inactive-form" onClick={formClickHandler}>
-              <form>
-                <input type="text" className="note-text" placeholder="Take a note..." />
-                <div className="form-actions">
-                  <div className="tooltip">
-                    <span className="material-symbols-outlined hover">check_box</span>
-                    <span className="tooltip-text">New List</span>
-                  </div>
-                  <div className="tooltip">
-                    <span className="material-symbols-outlined hover">brush</span>
-                    <span className="tooltip-text">New Drawing</span>
-                  </div>
-                  <div className="tooltip">
-                    <span className="material-symbols-outlined hover">image</span>
-                    <span className="tooltip-text">New Image</span>
-                  </div>
-                </div>
-              </form>
-            </div>
 
- */}
+
+ 
