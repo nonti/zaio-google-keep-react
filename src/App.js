@@ -6,23 +6,28 @@ import Notes from './components/Notes/Notes';
 import Modal from './components/Modal/Modal';
 
 
-const NOTES = [
-    // { id: "a121", title: "Some title 1", text:"Some text 1"},
-    // { id: "a122", title: "Some title 2", text:"Some text 2"},
-    // { id: "a122", title: "Some title 2", text:"Some text 2"},
-    // { id: "a122", title: "Some title 2", text:"Some text 2"}
-]
+const NOTES = []
 
 const App = () => {
   const [notes, setNotes] = useState(NOTES);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const addNote = (note) => {
     //change to  stateful list
-    setNotes((prevNotes) =>  {
-      return [...notes, note];
+    setNotes((prevNotes) => {
+      return [...prevNotes, note];
     });
-
+  };
+  const deleteNote = (id) => {
+    setNotes((prevNotes) => {
+      return prevNotes.filter(note => id !== note.id);
+    });
+  };
   
+  const toggleModal = () => {
+    setIsModalOpen(prevState => {
+      return !prevState
+    });
   }
   return (
     <div>
@@ -30,10 +35,20 @@ const App = () => {
       <Sidebar />
       {/* passing a reference */}
       <Form addNote={addNote} />
-      <Notes notes={ notes} />
-      <Modal />
+      <Notes
+        notes={notes}
+        deleteNote={deleteNote}
+        toggleModal={toggleModal}
+      />
+      {
+        isModalOpen && (
+          <Modal isModalOpen={isModalOpen} />
+        )
+      }
+      
     </div>
   );
-}
+};
+
 
 export default App;

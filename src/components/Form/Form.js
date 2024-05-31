@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Form.css";
+import { uid } from "uid";
 
 const Form = (props) => {
   const [title, setTitle] = useState("");
@@ -7,18 +8,22 @@ const Form = (props) => {
   const [isActiveForm, setActiveForm] = useState(false);
 
   const titleChangeHandler = (event) => setTitle(event.target.value);
-  const textChangeHandler = (event) => setText(event.target.value);
+  const textChangeHandler = (event) => {
+    setText(event.target.value);
+    setActiveForm(true);
+  }
 
   const submitFormHandler = (event) => {
     event.preventDefault();
     
     const note = {
-      id: "",
+      id: uid(),      
       title,
       text,
     };
-
     console.log(note);
+
+
     props.addNote(note);
     setTitle("");
     setText("");
@@ -26,7 +31,6 @@ const Form = (props) => {
   };
 
   const formClickHandler = () => {
-    console.log("form clicked on");
     setActiveForm(true);
   }
 
@@ -117,7 +121,3 @@ const Form = (props) => {
 }
 
 export default Form;
-
-
-
- 
