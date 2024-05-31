@@ -1,11 +1,13 @@
 import { useState } from "react";
 
 const Note = (props) => {
+	const {toggleModal, id} = props;
 	const [title, setTitle] = useState(props.title);
 	const [text, setText] = useState(props.text);
 	const [isHover, setIsHover] = useState(false);
 
 	const noteClickHandler = () => {
+		toggleModal();
 		// setTitle("chsnge title");
 		// setText("change text");
 	}

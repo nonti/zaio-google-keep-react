@@ -3,14 +3,14 @@ import Note from "./Note";
 
 const Notes = (props) =>{
 	// destructuring 
-	const { notes, deleteNote } = props;
+	const { notes, deleteNote, toggleModal } = props;
 	
   return (
 		<div className="notes">
 			{	notes.length === 0 ? (
 					<p>Notes you add appear here.</p>
 				) : (
-					notes.map((note, index) => <Note key={index} id={note.id} title={note.title} text={note.text} deleteNote={deleteNote} />
+					notes.map((note, index) => <Note key={index} id={note.id} title={note.title} text={note.text} deleteNote={deleteNote} toggleModal={ toggleModal} />
 				))
 			} 
 		</div>

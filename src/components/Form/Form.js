@@ -3,9 +3,10 @@ import "./Form.css";
 import { uid } from "uid";
 
 const Form = (props) => {
+  const { edit } = props;
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [isActiveForm, setActiveForm] = useState(false);
+  const [isActiveForm, setActiveForm] = useState(props.edit);
 
   const titleChangeHandler = (event) => setTitle(event.target.value);
   const textChangeHandler = (event) => {
