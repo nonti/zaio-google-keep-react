@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         <div className="tooltip">
           <span className="material-symbols-outlined hover">
-            <img src="https://lh3.googleusercontent.com/ogw/AF2bZyjh436ml3SG_DX2JqeRo7Lcp37uIiVIET2wex1aZ--gfRU=s32-c-mo" />
+            <img src="https://lh3.googleusercontent.com/ogw/AF2bZyjh436ml3SG_DX2JqeRo7Lcp37uIiVIET2wex1aZ--gfRU=s32-c-mo" alt="" aria-hidden="true" role="presentation"/>
           </span>
           <span className="tooltip-text">Google Accounts
             <span>Nonty Mboane</span>
