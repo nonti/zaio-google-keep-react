@@ -10,7 +10,7 @@ const NOTES = []
 
 const App = () => {
   const [notes, setNotes] = useState(NOTES);
-  const [selectedNote, setSelectedNote] = useState({});
+  const [selectedNote, setSelectedNote] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const addNote = (note) => {
@@ -21,9 +21,8 @@ const App = () => {
   };
 
   const editNote = (editedNote) => {
-    
     setNotes(prevNotes => {
-      const newArray = notes.map(note => {
+      const newArray = prevNotes.map(note => {
       if (editedNote.id === note.id) {
         note.title = editedNote.title;
         note.text = editedNote.text;
@@ -32,9 +31,8 @@ const App = () => {
       });
       return newArray;
     })
-
-    
   }
+
   const deleteNote = (id) => {
     setNotes((prevNotes) => {
       return prevNotes.filter(note => id !== note.id);
@@ -46,6 +44,7 @@ const App = () => {
       return !prevState
     });
   }
+  
   return (
     <div>
       <Navbar />

@@ -31,7 +31,6 @@ const Form = (props) => {
       });
       toggleModal();
     }
-    
     setTitle("");
     setText("");
   };
@@ -46,7 +45,7 @@ const Form = (props) => {
           className="form-container active-form"
           onClick={formClickHandler}
         >
-          <form onSubmit={submitFormHandler} className={isActiveForm ? "form": " "}>
+          <form onSubmit={submitFormHandler} className={isActiveForm ? "form": ""}>
             {isActiveForm && (
               <input 
                 onChange={titleChangeHandler}

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const Note = (props) => {
 	
 	const {toggleModal, note, setSelectedNote} = props;
-	
 	const [isHover, setIsHover] = useState(false);
 
 	const noteClickHandler = () => {
@@ -18,7 +17,8 @@ const Note = (props) => {
 		setIsHover(false); 
 	};
 
-	const deleteHandler = () => props.deleteNote(props.id);
+	const deleteHandler = () => props.deleteNote(note.id);
+
       return (
 				<div
 					className="note"
@@ -26,7 +26,7 @@ const Note = (props) => {
 					onClick={noteClickHandler}
 					onMouseOver={hoverOverHandler}
 					onMouseOut={hoverOutHandler}
-
+				
 				> 
 					{isHover && (
 						<span className="material-symbols-outlined check-circle">check_circle</span>

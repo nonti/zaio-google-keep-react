@@ -1,6 +1,7 @@
+import React, {useState} from "react";
 import "./Modal.css";
 import Form from "../Form/Form";
-import React, {useState} from "react";
+
 
 const Modal = (props) => {
   
@@ -8,7 +9,6 @@ const Modal = (props) => {
   const [hasCursor, setHasCursor] = useState(false);
 
   const handleCloseModal = () => !hasCursor && toggleModal();
-
   const handleMouseOverModal = () => setHasCursor(true);
   const handleMouseOutModal = () => setHasCursor(false);
 
