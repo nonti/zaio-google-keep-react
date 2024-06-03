@@ -1,19 +1,42 @@
-
+import React, { useState } from "react";
 
 const Note = (props) => {
-	let title = props.title;
-	let text = props.text;
+	
+	const {toggleModal, note, setSelectedNote} = props;
+	const [isHover, setIsHover] = useState(false);
 
 	const noteClickHandler = () => {
-		title = "changed Title";
-		alert(`Title: ${title}`);	
+		toggleModal();
+		setSelectedNote(note);
 	}
+
+	const hoverOverHandler = () => {
+		setIsHover(true); 
+	};
+	const hoverOutHandler = () => {
+		setIsHover(false); 
+	};
+
+	const deleteHandler = () => props.deleteNote(note.id);
+
       return (
-      <div className="note" id="note.id" onClick={noteClickHandler}>
-        <span className="material-symbols-outlined check-circle">check_circle</span>
-          <div className="title">{title}</div>
-          <div className="text">{text}</div>
-          	<div className="note-footer">
+				<div
+					className="note"
+					id={props.id}
+					onClick={noteClickHandler}
+					onMouseOver={hoverOverHandler}
+					onMouseOut={hoverOutHandler}
+				
+				> 
+					{isHover && (
+						<span className="material-symbols-outlined check-circle">check_circle</span>
+						)
+					}
+          <div className="title">{note.title}</div>
+					<div className="text">{note.text}</div>
+					<div
+						className="note-footer"
+						style={{ visibility: isHover ? "visible" : "hidden" }}>
             	<div className="tooltip">
               	<span className="material-symbols-outlined hover small-icon">add_alert</span>
               	<span className="tooltip-text">Remind me</span>
@@ -30,7 +53,7 @@ const Note = (props) => {
               	<span className="material-symbols-outlined hover small-icon">image</span>
               	<span className="tooltip-text">Add Image</span>
             	</div>
-            	<div className="tooltip archive">
+            	<div className="tooltip archive" onClick={deleteHandler}>
               	<span className="material-symbols-outlined hover small-icon">archive</span>
               	<span className="tooltip-text">Archive</span>
             	</div>
